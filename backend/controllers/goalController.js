@@ -40,7 +40,7 @@ const updateGoal = asyncHandler(async (req, res) =>{
         throw new Error('Goal not found')
     }
 
-    //find user by id
+    //find user by id -not needed can replace user with req.user
     const user = await User.findById(req.user.id)
     //check for user
     if(!user){
@@ -73,8 +73,8 @@ const deleteGoal = asyncHandler(async (req, res) =>{
         throw new Error('Goal not found')
     }
     
-    //find user by id
-    const user = await User.findById(req.user.id)
+    //find user by id, this is not needed as find user is done in the authMiddleware so can replace all 'user' with req.user
+   const user = await User.findById(req.user.id)
     //check for user
     if(!user){
         res.status(401)

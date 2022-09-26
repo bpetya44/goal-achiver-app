@@ -34,7 +34,9 @@ export const getGoals = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
+
       return await goalService.getGoals(token)
+
     } catch (error) {
       const message =
         (error.response &&
@@ -52,8 +54,11 @@ export const deleteGoal = createAsyncThunk(
   'goals/delete',
   async (id, thunkAPI) => {
     try {
+
       const token = thunkAPI.getState().auth.user.token
+
       return await goalService.deleteGoal(id, token)
+      
     } catch (error) {
       const message =
         (error.response &&
@@ -74,6 +79,7 @@ export const goalSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+    //create goal
       .addCase(createGoal.pending, (state) => {
         state.isLoading = true
       })
@@ -87,6 +93,7 @@ export const goalSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+      //get goals
       .addCase(getGoals.pending, (state) => {
         state.isLoading = true
       })
@@ -100,6 +107,7 @@ export const goalSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+      //delete goals
       .addCase(deleteGoal.pending, (state) => {
         state.isLoading = true
       })

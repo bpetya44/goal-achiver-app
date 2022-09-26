@@ -1,5 +1,4 @@
-# Getting Started with Create React App and Redux
-This app is a simple goal achiver app, where you can set up you goals. 
+# This app is a simple goal achiver app, where you can set up you goals. 
 
 ![Goal Achiver App](public/goals_achiver.png)
 
